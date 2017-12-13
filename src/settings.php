@@ -1,4 +1,6 @@
 <?php
+
+
 return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
@@ -15,5 +17,17 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+        'db' => [
+            'driver' => 'mysqli',
+            'host' => '127.0.0.1:3306',
+            'database' => 'tasktracker',
+            'username' => 'root',
+            'password' => 'qu12b0wl',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ]
     ],
 ];
+
+
