@@ -14,10 +14,13 @@ https://www.slimframework.com/docs/concepts/di.html
 // Route to home page
 $app->get('/[{name}]', function (Request $request, Response $response, array $args) {
     // Render index view
-    $db = $this->container['db'];
-    $users = $db::table('users')->where('id', 1)->get();
-    var_dump($users);
-    die();
+    $db = $this->db;
+    $users = $db::table('users')->where('id', 1)->first();
+    echo "<pre>";
+    print_r($users);
+    echo "</pre>";
+
+    die("user email is {$users->emailAddress}");
     return $this->renderer->render($response, 'login.php', $args);
 });
 

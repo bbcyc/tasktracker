@@ -18,7 +18,7 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'db' => [
-            'driver' => 'mysqli',
+            'driver' => 'mysql',
             'host' => '127.0.0.1:3306',
             'database' => 'tasktracker',
             'username' => 'root',

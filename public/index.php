@@ -10,6 +10,8 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 require __DIR__ . '/../vendor/autoload.php';
+//require '../src/models/dev.php';  
+// require '../src/handlers/exceptions.php';
 
 session_start();
 
