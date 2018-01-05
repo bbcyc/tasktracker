@@ -12,19 +12,26 @@ https://www.slimframework.com/docs/concepts/di.html
 */
 
 // Route to home page
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
+$app->get('/', function (Request $request, Response $response, array $args) {
     // Render index view
-    $db = $this->db;
+/*    $db = $this->db;
     $users = $db::table('users')->where('id', 1)->first();
     echo "<pre>";
     print_r($users);
     echo "</pre>";
 
-    die("user email is {$users->emailAddress}");
+    die("user email is {$users->emailAddress}");*/
     return $this->renderer->render($response, 'login.php', $args);
+})->setName('home');
+
+$app->post('/login', 'App\\Controllers\\AuthController:login'); 
+
+$app->get('/password/{password}', function (Request $request, Response $response, array $args) {
+	return password_hash($args['password'], PASSWORD_DEFAULT);
 });
 
-$app->post('/', function (Request $request, Response $response, array $args) {
+   
+   
     // Render index view
     //get username and password
     //validate and sanitize input
@@ -33,8 +40,8 @@ $app->post('/', function (Request $request, Response $response, array $args) {
     //if true redirect to main page
     //if false, reload login page with error message
 
-    return $this->renderer->render($response, 'login.php', $args);
-});
+   // return $this->renderer->render($response, 'login.php', $args);
+
 
 // site with good request authentication ideas
 // http://discourse.slimframework.com/t/how-to-use-middleware-to-control-auth-flow/1197/2 

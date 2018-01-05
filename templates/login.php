@@ -40,12 +40,12 @@
     </div>
     <div class="login-content">
         <h2><strong>Welcome</strong>, please login</h2>
-        <form method="post" action="index.html">                        
+        <form method="post" action="login">                        
             <div class="form-group">
-                <input type="text" placeholder="<?= $name ?>" class="form-control">
+                <input type="text" name="email" placeholder="Email Address" class="form-control">
             </div>                        
             <div class="form-group">
-                <input type="password" placeholder="Password" class="form-control">
+                <input type="password" name="password" placeholder="Password" class="form-control">
             </div>
             <div class="form-group">
                  <div class="checkbox checkbox-replace">
