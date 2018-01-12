@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use App\Models\User as User;
 
 class AuthController {
 	private $db;
@@ -48,8 +49,14 @@ class AuthController {
     //controller responds with whether those match existing records
     //if true redirect to main page
     //if false, reload login page with error message
+	}
 
+	public function signup(Request $request, Response $response) {
+		$email = $request->getParam('email');
+		$password = $request->getParam('password');
 
-
+		if (!User::checkEmail($email)) {
+			return "No user with that email";
+		}
 	}
 }

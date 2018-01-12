@@ -26,6 +26,12 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 $app->post('/login', 'App\\Controllers\\AuthController:login'); 
 
+$app->get('/signup', function (Request $request, Response $response, array $args) {
+    return $this->renderer->render($response, 'signup.php', $args);
+});
+$app->post('/signup', 'App\Controllers\AuthController:signup');
+
+
 $app->get('/password/{password}', function (Request $request, Response $response, array $args) {
 	return password_hash($args['password'], PASSWORD_DEFAULT);
 });
