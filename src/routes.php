@@ -24,7 +24,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'login.php', $args);
 })->setName('home');
 
-$app->post('/login', 'App\\Controllers\\AuthController:login'); 
+$app->post('/login', 'App\Controllers\AuthController:login'); 
 
 $app->get('/signup', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'signup.php', $args);
@@ -36,7 +36,7 @@ $app->get('/password/{password}', function (Request $request, Response $response
 	return password_hash($args['password'], PASSWORD_DEFAULT);
 });
 
-   
+
    
     // Render index view
     //get username and password
@@ -58,4 +58,4 @@ $app->get('/index', '\App\Controllers\DefaultController:index');
 $app->get('/oop', '\App\Controllers\DefaultController:oop');
 */
 
-// set up a controller and method for login, make sure it works when the form is submitted. work on db connection.
+$app->post('/signup', 'App\Controllers\AuthController:signup');

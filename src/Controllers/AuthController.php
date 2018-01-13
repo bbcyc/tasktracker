@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\User as User;
+
+use App\Models\User;
 
 class AuthController {
 	private $db;
@@ -32,10 +35,11 @@ class AuthController {
     //get username and password
     //validate and sanitize input
     //send username and password to controller that connects to db to check username/pw
-
-    	$db = $this->db;
-   		$user = $db::table('users')->where('emailAddress', $emailAddress)->first();
-   		if (!$user) {
+		$userModel = new User();
+		$user = $userModel->getUserByEmail($emailAddress);
+    	\App\Utilities::pr($user);
+    	exit;
+    	if (!$user) {
    			return $response->withRedirect('/');
    			//TODO: error message that username is not correct
    		}
@@ -50,7 +54,6 @@ class AuthController {
     //if true redirect to main page
     //if false, reload login page with error message
 	}
-
 	public function signup(Request $request, Response $response) {
 		$email = $request->getParam('email');
 		$password = $request->getParam('password');
@@ -58,5 +61,16 @@ class AuthController {
 		if (!User::checkEmail($email)) {
 			return "No user with that email";
 		}
-	}
+		$db = $this->db;
+   		$user = $db::table('users')->where('emailAddress', $email)->first();
+
+   		if ($user) {
+   			// return message that user with that email already exists
+   		}
+   		else {
+   			$user = $db::table('users')->insert('emailAddress', $email);
+   		}
+
+
+
 }
