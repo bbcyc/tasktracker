@@ -44,6 +44,7 @@ class AuthController {
    			//TODO: error message that username is not correct
    		}
    		if (password_verify($password, $user->password)) {
+   			$_SESSION['id'] = $user->id;
    			return "success!";
    		} else {
    			return "password incorrect";
@@ -57,6 +58,20 @@ class AuthController {
 	public function signup(Request $request, Response $response) {
 		$email = $request->getParam('email');
 		$password = $request->getParam('password');
+		$password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+		$userModel = new User();
+		$user = $userModel->getUserByEmail($emailAddress);
+
+		if ($user) {
+			// send message that email is already in use
+			return $response->withRedirect('/signup');
+		} else {
+			$user = $userModel->createUser($email, $password_hash);
+			// redirect user to home page
+		}
+
+
 
 		if (!User::checkEmail($email)) {
 			return "No user with that email";

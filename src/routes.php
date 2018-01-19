@@ -58,4 +58,3 @@ $app->get('/index', '\App\Controllers\DefaultController:index');
 $app->get('/oop', '\App\Controllers\DefaultController:oop');
 */
 
-$app->post('/signup', 'App\Controllers\AuthController:signup');

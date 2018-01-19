@@ -22,4 +22,18 @@ class User extends Model
     	$user = $this->where('emailAddress', $email)->first();
     	return $user;
     }
+
+    /**
+     * @param str $email
+     * @param str $password_hash
+     *
+     * @return User|null
+     */
+    public function createUser($email, $password_hash) {
+    	$user = $this->insert([
+			'emailAddress' => $email, 
+			'password' => $password_hash,
+			]);
+    	return $user;
+    }    
 }
