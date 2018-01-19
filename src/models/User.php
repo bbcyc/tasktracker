@@ -27,13 +27,13 @@ class User extends Model
      * @param str $email
      * @param str $password_hash
      *
-     * @return User|null
+     * @return int|null
      */
     public function createUser($email, $password_hash) {
-    	$user = $this->insert([
-			'emailAddress' => $email, 
-			'password' => $password_hash,
+		$userID = $this->insertGetId([
+			'emailAddress' => $email,
+			'password' => $password_hash
 			]);
-    	return $user;
-    }    
+		return $userID;
+    }
 }

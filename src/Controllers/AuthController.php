@@ -6,15 +6,20 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\User as User;
 
-use App\Models\User;
-
 class AuthController {
 	private $db;
+	private $container;
 
 	public function __construct($container) {
 		$this->db = $container->db;
+		$this->container = $container;
 	}
-
+	/**
+	 * @param Request $request
+	 * @param Response $response
+	 *
+	 * @return 
+	 */
 	public function login(Request $request, Response $response) {
 		
 		$emailAddress = $request->getParam('email');
@@ -43,15 +48,10 @@ class AuthController {
    			//TODO: error message that username is not correct
    		}
    		if (password_verify($password, $user->password)) {
-<<<<<<< HEAD
-   			$_SESSION['id'] = $user->id;
-   			return "success!";
-=======
    			// set session variable
    			$_SESSION['userID'] = $user->id;
    			// redirect to dashboard
    			return $response->withRedirect('/dashboard');
->>>>>>> 9aa3152669ebffe4319e5f0c090b226422c88c25
    		} else {
    			return "password incorrect";
    		}
@@ -61,37 +61,30 @@ class AuthController {
     //if true redirect to main page
     //if false, reload login page with error message
 	}
+
+
 	public function signup(Request $request, Response $response) {
 		$email = $request->getParam('email');
 		$password = $request->getParam('password');
 		$password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 		$userModel = new User();
-		$user = $userModel->getUserByEmail($emailAddress);
-
+		$user = $userModel->getUserByEmail($email);
+	//	\App\Utilities::pr($user);
+	//	exit;
 		if ($user) {
 			// send message that email is already in use
-			return $response->withRedirect('/signup');
+			return "user already exists";
+			// return $response->withRedirect('/signup');
 		} else {
-			$user = $userModel->createUser($email, $password_hash);
+			$userID = $userModel->createUser($email, $password_hash);
 			// redirect user to home page
+			if ($userID) {
+				$_SESSION['userID'] = $userID;
+				return $response->withRedirect('/dashboard');
+			} else {
+				return "something went wrong creating the user.";
+			}
 		}
-
-
-
-		if (!User::checkEmail($email)) {
-			return "No user with that email";
-		}
-		$db = $this->db;
-   		$user = $db::table('users')->where('emailAddress', $email)->first();
-
-   		if ($user) {
-   			// return message that user with that email already exists
-   		}
-   		else {
-   			$user = $db::table('users')->insert('emailAddress', $email);
-   		}
-
-
-
+	}
 }
