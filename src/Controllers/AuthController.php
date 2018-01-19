@@ -37,15 +37,21 @@ class AuthController {
     //send username and password to controller that connects to db to check username/pw
 		$userModel = new User();
 		$user = $userModel->getUserByEmail($emailAddress);
-    	\App\Utilities::pr($user);
-    	exit;
+  
     	if (!$user) {
    			return $response->withRedirect('/');
    			//TODO: error message that username is not correct
    		}
    		if (password_verify($password, $user->password)) {
+<<<<<<< HEAD
    			$_SESSION['id'] = $user->id;
    			return "success!";
+=======
+   			// set session variable
+   			$_SESSION['userID'] = $user->id;
+   			// redirect to dashboard
+   			return $response->withRedirect('/dashboard');
+>>>>>>> 9aa3152669ebffe4319e5f0c090b226422c88c25
    		} else {
    			return "password incorrect";
    		}
