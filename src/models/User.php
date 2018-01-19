@@ -19,8 +19,8 @@ class User extends Model
      * @return User|null
      */
     public function getUserByEmail($email) {
-    	$user = $this->where('emailAddress', $email)->first();
-    	return $user;
+		$user = $this->where('emailAddress', $email)->first();
+		return $user;
     }
 
     /**
