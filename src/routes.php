@@ -36,6 +36,7 @@ $app->get('/password/{password}', function (Request $request, Response $response
 	return password_hash($args['password'], PASSWORD_DEFAULT);
 });
 
+$app->get('/dashboard', 'App\Controllers\TaskController:dashboard'); 
 
    
     // Render index view
