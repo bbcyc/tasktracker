@@ -47,7 +47,8 @@
 	
 		<!-- Site header  -->
 		<header class="site-header">
-		  <div class="site-logo"><h1>TaskTracker</h1></div>
+		  <div class="site-logo">
+		    <h1>TaskTracker<?= $_SESSION['userID'] ?></h1></div>
 		  <div class="sidebar-collapse hidden-xs"><a class="sidebar-collapse-icon" href="#"><i class="icon-menu"></i></a></div>
 		  <div class="sidebar-mobile-menu visible-xs"><a data-target="#side-nav" data-toggle="collapse" class="mobile-menu-icon" href="#"><i class="icon-menu"></i></a></div>
 		</header>
@@ -201,7 +202,7 @@
 				  <li><a href="#"><i class="icon-clipboard"></i>Tasks</a></li>
 				  <li class="divider"></li>
 				  <li><a href="#"><i class="icon-cog"></i>Account settings</a></li>
-				  <li><a href="#"><i class="icon-logout"></i>Logout</a></li>
+				  <li><a href="/logout"><i class="icon-logout"></i>Logout</a></li>
 				</ul>
 				<!-- /user action menu -->
 				

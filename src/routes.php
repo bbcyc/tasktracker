@@ -31,6 +31,7 @@ $app->get('/signup', function (Request $request, Response $response, array $args
 });
 $app->post('/signup', 'App\Controllers\AuthController:signup');
 
+$app->get('/logout', 'App\Controllers\AuthController:logout');
 
 $app->get('/password/{password}', function (Request $request, Response $response, array $args) {
 	return password_hash($args['password'], PASSWORD_DEFAULT);
