@@ -92,6 +92,6 @@ class AuthController {
 		if (isset($_SESSION['userID'])) {
 			unset($_SESSION['userID']);
 		}
-		return $response->withRedirect('/login');
+		return $response->withRedirect('/');
 	}
 }

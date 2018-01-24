@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use App\Models\User;
 
-class TaskController {
+class TaskController extends Controller {
 	private $db;
 	private $container;
 
@@ -18,6 +18,10 @@ class TaskController {
 
 	public function dashboard(Request $request, Response $response) {
 		 // FIXME: this could be better, find out how to load renderer properly
+		 if (!$this->isLoggedIn()) {
+		 	echo "You are not logged in";
+		 	exit;
+		 }
 		 return $this->container->renderer->render($response, 'dashboard.php');
 		
 
