@@ -315,7 +315,16 @@
 		
 		<!-- Main content -->
 		<div class="main-content">
-			<h1 class="page-title">Dashboard</h1>
+			<div class="row">
+				<div class="col-lg-6">
+					<h1 class="page-title">Dashboard</h1>
+				</div>
+				<div class="col-lg-6">
+					<button class="btn btn-sm btn-success pull-right" data-toggle="modal" data-target="#newtask">+ New Task</button>
+				<!--	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-1">Show me</button> -->
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="row">
@@ -854,6 +863,42 @@
   
 </div>
 <!-- /page container -->
+
+<!--Basic Modal-->
+<div id="newtask" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    
+      
+				<div class="panel panel-default">
+					<div class="panel-heading clearfix">
+						<h3 class="panel-title">Basic Form</h3>
+						<ul class="panel-tool-options"> 
+							<li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+							<li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+							<li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+						</ul>
+					</div>
+					<div class="panel-body">
+						 <form>
+							  <div class="form-group">
+								<label for="emailaddress">Email address</label>
+								<input type="email" class="form-control" id="emailaddress" placeholder="Email">
+							  </div>
+							  <div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" class="form-control" id="password" placeholder="Password">
+							  </div>
+							  <div class="checkbox">
+								<label><input type="checkbox">Check me out</label>
+							  </div>
+							  <button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+			
+    
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--End Basic Modal-->
 
 <!--Load JQuery-->
 <script src="js/jquery.min.js"></script>
