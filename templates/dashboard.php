@@ -879,13 +879,13 @@
 						</ul>
 					</div>
 					<div class="panel-body">
-						 <form>
+						 <form id="create-task">
 							  <div class="form-group">
 								<label for="emailaddress">Email address</label>
 								<input type="email" class="form-control" id="emailaddress" placeholder="Email">
 							  </div>
 							  <div class="form-group">
-								<label for="password">Password</label>
+								<label for="password" id="password-label">Password</label>
 								<input type="password" class="form-control" id="password" placeholder="Password">
 							  </div>
 							  <div class="checkbox">
@@ -914,7 +914,8 @@
 <script src="js/plugins/flot/jquery.flot.pie.min.js"></script>
 <script src="js/plugins/flot/jquery.flot.time.min.js"></script>
 <script src="js/functions.js"></script>
-
+<!-- Dashboard JS-->
+<script src="js/tasktracker/dashboard.js"></script>
 <!--ChartJs-->
 <script src="js/plugins/chartjs/Chart.min.js"></script>
 <script>
