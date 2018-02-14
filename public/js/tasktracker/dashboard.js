@@ -1,10 +1,18 @@
 $("#create-task").submit(function( event ) {
-	var data = $(this).serializeArray();
-	dataString = JSON.stringify(data);
-
-	console.log(data);
-	console.log(dataString);
-	
-  	event.preventDefault();
+	event.preventDefault();
+	  $.ajax( {
+      type: "POST",
+      url: 'task/create',
+      data: $('#create-task').serialize(),
+      success: function( response ) {
+      	console.log(response);
+      	if (response.messageType == 'error') {
+      		$('create-task-alert').addClass("alert-danger");
+      		$('create-task-alert').removeClass("hidden");
+      	}
+        
+      }
+	});
+  	
 });
 

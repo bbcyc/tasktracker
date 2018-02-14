@@ -23,7 +23,21 @@ class TaskController extends Controller {
 		 	exit;
 		 }
 		 return $this->container->renderer->render($response, 'dashboard.php');
+	}
+
+	public function create(Request $request, Response $response) {
+	//	\App\Utilities::pr($request);
+	//	exit;
+		$emailAddress = $request->getParam('emailaddress');
+		$payload = [
+			'messageType' => 'error',
+			'message' => 'Could not create task'
+			
+		];
 		
+		return $response->withJson($payload);
 
 	}
+
+
 }

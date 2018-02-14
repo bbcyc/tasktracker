@@ -879,10 +879,11 @@
 						</ul>
 					</div>
 					<div class="panel-body">
-						 <form id="create-task">
+						<div class="alert alert-dismissible hidden" id="create-task-alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span id="create-task-message">&nbsp;</span></div>
+						<form id="create-task">
 							  <div class="form-group">
 								<label for="emailaddress">Email address</label>
-								<input type="email" class="form-control" id="emailaddress" placeholder="Email">
+								<input type="email" class="form-control" name="emailaddress" placeholder="Email">
 							  </div>
 							  <div class="form-group">
 								<label for="password" id="password-label">Password</label>

@@ -37,8 +37,9 @@ $app->get('/password/{password}', function (Request $request, Response $response
 	return password_hash($args['password'], PASSWORD_DEFAULT);
 });
 
+// Task routes
 $app->get('/dashboard', 'App\Controllers\TaskController:dashboard'); 
-
+$app->post('/task/create', 'App\Controllers\TaskController:create');
    
     // Render index view
     //get username and password
