@@ -7,10 +7,15 @@ $("#create-task").submit(function( event ) {
       success: function( response ) {
       	console.log(response);
       	if (response.messageType == 'error') {
-      		$('create-task-alert').addClass("alert-danger");
-      		$('create-task-alert').removeClass("hidden");
+      		$('#create-task-alert').addClass("alert-danger");
+      		$('#create-task-alert').removeClass("hidden");
+      		$('#create-task-message').text(response.message);
       	}
-        
+        else if (response.messageType == 'success') {
+        	$('#create-task-alert').addClass("alert-danger");
+        	$('#create-task-alert').removeClass("hidden");
+      		$('#create-task-message').text(response.message);
+        }
       }
 	});
   	

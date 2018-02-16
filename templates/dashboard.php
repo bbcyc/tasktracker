@@ -879,7 +879,12 @@
 						</ul>
 					</div>
 					<div class="panel-body">
-						<div class="alert alert-dismissible hidden" id="create-task-alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span id="create-task-message">&nbsp;</span></div>
+						<div class="alert alert-dismissible hidden" id="create-task-alert" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+								<span id="create-task-message">&nbsp;</span>
+						</div>
 						<form id="create-task">
 							  <div class="form-group">
 								<label for="emailaddress">Email address</label>
