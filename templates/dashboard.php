@@ -917,7 +917,7 @@
                                         </div>
                               </div>
                               <div class="form-group">
-                                        <label>Checkboxes</label>
+                                        <label>Weekdays</label>
                                         <div class="checkbox checkbox-replace">
                                             <input type="checkbox" id="checkbox1" value="Sunday">
                                             <label for="checkbox1">Sunday</label>
@@ -947,7 +947,15 @@
                                             <label for="checkbox3">Saturday</label>
                                         </div>
                                     </div>
-
+                              <div class="form-group">
+                                        <label>Day of Month</label>
+                                        <div class="checkbox checkbox-replace daynumber">&nbsp;</div>
+<script>
+for (i=0; i<=31; i++) {
+    document.getElementById("daynumber").innerHTML += '<input type="checkbox" id="m' + i + 
+      '" value="' + i + '"><label for="m' + i + '">' + i + '</label></div>';
+}                                      
+</script>
 
 
 
