@@ -26,6 +26,8 @@
 
 <link href="css/mouldifi-forms.css" rel="stylesheet">
 
+<link href="css/plugins/datepicker/bootstrap-datepicker.css" rel="stylesheet">
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -887,9 +889,35 @@
 						</div>
 						<form id="create-task">
 							  <div class="form-group">
-								<label for="emailaddress">Email address</label>
-								<input type="email" class="form-control" name="emailaddress" placeholder="Email">
+								<label for="name">Task Name</label>
+								<input type="text" class="form-control" name="name" placeholder="Task Name">
 							  </div>
+							  <div class="form-group">
+									<div class="col-lg-12">
+										<label>Repeatable?</label>
+										<div class="clearfix">
+											<div class="radio radio-inline radio-replace"><input type="radio" name="repeatable" id="repeatYes" value="repeatYes"><label for="repeatYes">Yes</label></div> 
+											<div class="radio radio-inline radio-replace"><input type="radio" name="repeatable" id="repeatNo" value="repeatNo"><label for="repeatNo">No</label></div>
+										</div>
+									</div>
+								</div>
+							<!--	<div class="form-group"> 
+									<label class="col-sm-3 control-label">Date Picker (popup)</label> 
+									<div class="col-sm-3"> 
+										<div id="date-popup" class="input-group date"> 
+											<input type="text" data-format="D, dd MM yyyy" class="form-control"> 
+											<span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+										</div>
+									</div> 
+								</div> -->
+
+
+
+
+
+
+
+
 							  <div class="form-group">
 								<label for="password" id="password-label">Password</label>
 								<input type="password" class="form-control" id="password" placeholder="Password">
