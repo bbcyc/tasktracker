@@ -947,15 +947,29 @@
                                             <label for="checkbox3">Saturday</label>
                                         </div>
                                     </div>
+
                               <div class="form-group">
                                         <label>Day of Month</label>
-                                        <div class="checkbox checkbox-replace daynumber">&nbsp;</div>
-<script>
-for (i=0; i<=31; i++) {
-    document.getElementById("daynumber").innerHTML += '<input type="checkbox" id="m' + i + 
-      '" value="' + i + '"><label for="m' + i + '">' + i + '</label></div>';
+                                        <div class="clearfix" 
+                                            <div class="checkbox checkbox-inline checkbox-replace">
+                                                <input type="checkbox" id="m1" value="1">
+                                                <label for="m1">1</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+<!-- <script>
+for (i=1; i<=31; i++) {
+    document.getElementById("daynumber").innerHTML += 
+        '<div class="checkbox checkbox-inline checkbox-replace"><input type="checkbox" id="m' 
+        + i + '" value="' + i + '"><label for="m' + i + '">';
+    if (i < 10)  { document.getElementById("daynumber").innerText += '&nbsp;'; }
+    document.getElementById("daynumber").innerHTML += i + '&nbsp;</label></div>';
+    if (i % 7 === 0) { document.getElementById("daynumber").innerHTML += '<br>&nbsp;'; }
 }                                      
-</script>
+</script>-->
 
 
 
