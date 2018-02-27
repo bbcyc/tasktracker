@@ -28,6 +28,8 @@
 
 <link href="css/plugins/datepicker/bootstrap-datepicker.css" rel="stylesheet">
 
+<link href="css/plugins/select2/select2.css" rel="stylesheet">
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -868,119 +870,291 @@
 
 <!--Basic Modal-->
 <div id="newtask" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    
-      
-                <div class="panel panel-default">
-                    <div class="panel-heading clearfix">
-                        <h3 class="panel-title">Basic Form</h3>
-                        <ul class="panel-tool-options"> 
-                            <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
-                            <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
-                            <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
-                        </ul>
+    <div class="modal-dialog">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title">Basic Form</h3>
+                <ul class="panel-tool-options"> 
+                    <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+                    <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+                    <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-dismissible hidden" id="create-task-alert" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span id="create-task-message">&nbsp;</span>
+                </div>
+                <form id="create-task">
+                    <div class="form-group">
+                        <label for="name">Task Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Task Name">
                     </div>
-                    <div class="panel-body">
-                        <div class="alert alert-dismissible hidden" id="create-task-alert" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                                <span id="create-task-message">&nbsp;</span>
+                    <div class="form-group">
+                        <label>Repeatable?</label>
+                        <div class="clearfix">
+                            <div class="radio radio-inline radio-replace">
+                                <input type="radio" name="repeatable" id="repeatYes" value="repeatYes">
+                                <label for="repeatYes">Yes</label>
+                            </div> 
+                            <div class="radio radio-inline radio-replace">
+                                <input type="radio" name="repeatable" id="repeatNo" value="repeatNo">
+                                <label for="repeatNo">No</label>
+                            </div>
                         </div>
-                        <form id="create-task">
-                              <div class="form-group">
-                                <label for="name">Task Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Task Name">
-                              </div>
-                              <div class="form-group">
-                                        <label>Repeatable?</label>
-                                        <div class="clearfix">
-                                            <div class="radio radio-inline radio-replace"><input type="radio" name="repeatable" id="repeatYes" value="repeatYes"><label for="repeatYes">Yes</label></div> 
-                                            <div class="radio radio-inline radio-replace"><input type="radio" name="repeatable" id="repeatNo" value="repeatNo"><label for="repeatNo">No</label></div>
-                                        </div>
-                              </div>
-                              <div class="form-group"> 
-                                <label>Date Picker (popup)</label> 
-                                <!-- <div class="col-sm-3">  -->
-                                  <div id="date-popup" class="input-group date"> 
-                                    <input type="text" data-format="D, dd MM yyyy" class="form-control"> 
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
-                                  </div>
-                                <!-- </div>  -->
-                              </div>
-                              <div class="form-group">
-                                    <label>Frequency</label>
-                                        <div class="clearfix">
-                                            <div class="radio radio-inline radio-replace"><input type="radio" name="frequency" id="radioInput1" value="radioA"><label for="radioInput1">Daily</label></div> 
-                                            <div class="radio radio-inline radio-replace"><input type="radio" name="frequency" id="radioInput2" value="radioB"><label for="radioInput2">Weekly</label></div> 
-                                            <div class="radio radio-inline radio-replace"><input type="radio" name="frequency" id="radioInput3" value="radioC"><label for="radioInput3">Monthly</label></div>
-                                        </div>
-                              </div>
-                              <div class="form-group">
-                                        <label>Weekdays</label>
-                                        <div class="checkbox checkbox-replace">
-                                            <input type="checkbox" id="checkbox1" value="Sunday">
-                                            <label for="checkbox1">Sunday</label>
-                                        </div>
-                                        <div class="checkbox checkbox-replace">
-                                            <input type="checkbox" id="checkbox1" value="Monday">
-                                            <label for="checkbox1">Monday</label>
-                                        </div>
-                                        <div class="checkbox checkbox-replace">
-                                            <input type="checkbox" id="checkbox2" value="Tuesday">
-                                            <label for="checkbox2">Tuesday</label>
-                                        </div>
-                                        <div class="checkbox checkbox-replace">
-                                            <input type="checkbox" id="checkbox3" value="Wednesday">
-                                            <label for="checkbox3">Wednesday</label>
-                                        </div>
-                                        <div class="checkbox checkbox-replace">
-                                            <input type="checkbox" id="checkbox3" value="Thursday">
-                                            <label for="checkbox3">Thursday</label>
-                                        </div>
-                                        <div class="checkbox checkbox-replace">
-                                            <input type="checkbox" id="checkbox3" value="Friday">
-                                            <label for="checkbox3">Friday</label>
-                                        </div>
-                                        <div class="checkbox checkbox-replace">
-                                            <input type="checkbox" id="checkbox3" value="Saturday">
-                                            <label for="checkbox3">Saturday</label>
-                                        </div>
-                                    </div>
-
-                              <div class="form-group">
-                                        <label>Day of Month</label>
-                                        <div class="clearfix" 
-                                            <div class="checkbox checkbox-inline checkbox-replace">
-                                                <input type="checkbox" id="m1" value="1">
-                                                <label for="m1">1</label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-<!-- <script>
-for (i=1; i<=31; i++) {
-    document.getElementById("daynumber").innerHTML += 
-        '<div class="checkbox checkbox-inline checkbox-replace"><input type="checkbox" id="m' 
-        + i + '" value="' + i + '"><label for="m' + i + '">';
-    if (i < 10)  { document.getElementById("daynumber").innerText += '&nbsp;'; }
-    document.getElementById("daynumber").innerHTML += i + '&nbsp;</label></div>';
-    if (i % 7 === 0) { document.getElementById("daynumber").innerHTML += '<br>&nbsp;'; }
-}                                      
-</script>-->
-
-
-
-
-                              
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
                     </div>
-            
-    
-  </div><!-- /.modal-dialog -->
+                    <div class="form-group"> 
+                        <label>Date Picker (popup)</label> 
+                        <div id="date-popup" class="input-group date"> 
+                            <input type="text" data-format="D, dd MM yyyy" class="form-control"> 
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Frequency</label>
+                        <div class="clearfix">
+                            <div class="radio radio-inline radio-replace">
+                                <input type="radio" name="frequency" id="radioInput1" value="radioA">
+                                <label for="radioInput1">Daily</label>
+                            </div> 
+                            <div class="radio radio-inline radio-replace">
+                                <input type="radio" name="frequency" id="radioInput2" value="radioB">
+                                <label for="radioInput2">Weekly</label>
+                            </div> 
+                            <div class="radio radio-inline radio-replace">
+                                <input type="radio" name="frequency" id="radioInput3" value="radioC">
+                                <label for="radioInput3">Monthly</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Weekdays</label>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="checkbox1" value="Sunday">
+                            <label for="checkbox1">Sunday</label>
+                        </div>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="checkbox1" value="Monday">
+                            <label for="checkbox1">Monday</label>
+                        </div>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="checkbox2" value="Tuesday">
+                            <label for="checkbox2">Tuesday</label>
+                        </div>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="checkbox3" value="Wednesday">
+                            <label for="checkbox3">Wednesday</label>
+                        </div>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="checkbox3" value="Thursday">
+                            <label for="checkbox3">Thursday</label>
+                        </div>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="checkbox3" value="Friday">
+                            <label for="checkbox3">Friday</label>
+                        </div>
+                        <div class="checkbox checkbox-replace">
+                            <input type="checkbox" id="checkbox3" value="Saturday">
+                            <label for="checkbox3">Saturday</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Day of Month</label>
+                        <div class="clearfix">    
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m1" value="1">
+                                <label for="m1"> 1</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m2" value="2">
+                                <label for="m2"> 2</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m3" value="3">
+                                <label for="m3"> 3</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m4" value="4">
+                                <label for="m4"> 4</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m5" value="5">
+                                <label for="m5"> 5</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m6" value="6">
+                                <label for="m6"> 6</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m7" value="7">
+                                <label for="m7"> 7</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m8" value="8">
+                                <label for="m8"> 8</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m9" value="9">
+                                <label for="m9"> 9</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m10" value="10">
+                                <label for="m10">10</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m11" value="11">
+                                <label for="m11">11</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m12" value="12">
+                                <label for="m12">12</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m13" value="13">
+                                <label for="m13">13</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m14" value="14">
+                                <label for="m14">14</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m15" value="15">
+                                <label for="m15">15</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m16" value="16">
+                                <label for="m16">16</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m17" value="17">
+                                <label for="m17">17</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m18" value="18">
+                                <label for="m18">18</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m19" value="19">
+                                <label for="m19">19</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m20" value="20">
+                                <label for="m20">20</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m21" value="21">
+                                <label for="m21">21</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m22" value="22">
+                                <label for="m22">22</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m23" value="23">
+                                <label for="m23">23</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m24" value="24">
+                                <label for="m24">24</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m25" value="25">
+                                <label for="m25">25</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m26" value="26">
+                                <label for="m26">26</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m27" value="27">
+                                <label for="m27">27</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m28" value="28">
+                                <label for="m28">28</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m29" value="29">
+                                <label for="m29">29</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m30" value="30">
+                                <label for="m30">30</label>
+                            </div>
+                            <div class="checkbox checkbox-inline checkbox-replace">
+                                <input type="checkbox" id="m31" value="31">
+                                <label for="m31">31</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <label class="col-sm-3 control-label">First Week</label> 
+                        <div class="col-sm-9"> 
+                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                                <option value="">Select days</option>
+                                <option value="1sunday" >Sunday</option> 
+                                <option value="1monday" >Monday</option> 
+                                <option value="1tuesday" >Tuesday</option> 
+                                <option value="1wednesday" >Wednesday</option> 
+                                <option value="1thursday" >Thursday</option> 
+                                <option value="1friday" >Friday</option> 
+                                <option value="1saturday" >Saturday</option>
+                            </select>
+                        </div> 
+                    </div>
+                     <div class="form-group"> 
+                        <label class="col-sm-3 control-label">Second Week</label> 
+                        <div class="col-sm-9"> 
+                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                                <option value="">Select days</option>
+                                <option value="2sunday" >Sunday</option> 
+                                <option value="2monday" >Monday</option> 
+                                <option value="2tuesday" >Tuesday</option> 
+                                <option value="2wednesday" >Wednesday</option> 
+                                <option value="2thursday" >Thursday</option> 
+                                <option value="2friday" >Friday</option> 
+                                <option value="2saturday" >Saturday</option>
+                            </select>
+                        </div> 
+                    </div>
+                     <div class="form-group"> 
+                        <label class="col-sm-3 control-label">Third Week</label> 
+                        <div class="col-sm-9"> 
+                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                                <option value="">Select days</option>
+                                <option value="3sunday" >Sunday</option> 
+                                <option value="3monday" >Monday</option> 
+                                <option value="3tuesday" >Tuesday</option> 
+                                <option value="3wednesday" >Wednesday</option> 
+                                <option value="3thursday" >Thursday</option> 
+                                <option value="3friday" >Friday</option> 
+                                <option value="3saturday" >Saturday</option>
+                            </select>
+                        </div> 
+                    </div>
+                     <div class="form-group"> 
+                        <label class="col-sm-3 control-label">Fourth Week</label> 
+                        <div class="col-sm-9"> 
+                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                                <option value="">Select days</option>
+                                <option value="4sunday" >Sunday</option> 
+                                <option value="4monday" >Monday</option> 
+                                <option value="4tuesday" >Tuesday</option> 
+                                <option value="4wednesday" >Wednesday</option> 
+                                <option value="4thursday" >Thursday</option> 
+                                <option value="4friday" >Friday</option> 
+                                <option value="4saturday" >Saturday</option>
+                            </select>
+                        </div> 
+                    </div>
+                    <button type="submit" class="btn btn-white">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>    
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--End Basic Modal-->
 
@@ -1002,6 +1176,8 @@ for (i=1; i<=31; i++) {
 <script src="js/tasktracker/dashboard.js"></script>
 <!--Bootstrap DatePicker-->
 <script src="js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Select2-->
+
 <script>
 $('#date-popup').datepicker({
             keyboardNavigation: false,
@@ -1010,6 +1186,13 @@ $('#date-popup').datepicker({
         });
 </script>
 
+<script src="js/plugins/select2/select2.full.min.js"></script>
+<script>
+    $(".select2").select2();
+    $(".select2-placeholer").select2({
+        allowClear: true
+    });
+</script>
 
 <!--ChartJs-->
 <script src="js/plugins/chartjs/Chart.min.js"></script>
