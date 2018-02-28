@@ -21,6 +21,17 @@ $("#create-task").submit(function( event ) {
   	
 });
 
+$(".repeatable").change(function( event ) {
+  isRepeatable = $("input[name='repeatable']:checked").val();
+  if (isRepeatable==="true") {
+    $("#repeatableOptions").removeClass("hidden");
+    $("#datepicker").addClass("hidden");
+  } else {
+    $("#datepicker").removeClass("hidden");
+    $("#repeatableOptions").addClass("hidden");
+  }
+});
+
 /* Create/Edit a Task
 Both actions display the same page/modal
 Edit sction will prepopulate the page with details for that task

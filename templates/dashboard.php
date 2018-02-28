@@ -896,22 +896,23 @@
                         <label>Repeatable?</label>
                         <div class="clearfix">
                             <div class="radio radio-inline radio-replace">
-                                <input type="radio" name="repeatable" id="repeatYes" value="repeatYes">
+                                <input class="repeatable" type="radio" name="repeatable" id="repeatYes" value="true">
                                 <label for="repeatYes">Yes</label>
                             </div> 
                             <div class="radio radio-inline radio-replace">
-                                <input type="radio" name="repeatable" id="repeatNo" value="repeatNo">
+                                <input class="repeatable" type="radio" name="repeatable" id="repeatNo" value="false">
                                 <label for="repeatNo">No</label>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group"> 
+                    <div class="form-group hidden" id="datepicker"> 
                         <label>Date Picker (popup)</label> 
                         <div id="date-popup" class="input-group date"> 
                             <input type="text" data-format="D, dd MM yyyy" class="form-control"> 
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
                         </div>
                     </div>
+                    <div class="hidden" id="repeatableOptions">
                     <div class="form-group">
                         <label>Frequency</label>
                         <div class="clearfix">
@@ -965,39 +966,41 @@
                         <div class="clearfix">    
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m1" value="1">
-                                <label for="m1"> 1</label>
+                                <label for="m1">1<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m2" value="2">
-                                <label for="m2"> 2</label>
+                                <label for="m2">2<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m3" value="3">
-                                <label for="m3"> 3</label>
+                                <label for="m3">3<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m4" value="4">
-                                <label for="m4"> 4</label>
+                                <label for="m4">4<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m5" value="5">
-                                <label for="m5"> 5</label>
+                                <label for="m5">5<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m6" value="6">
-                                <label for="m6"> 6</label>
+                                <label for="m6">6<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m7" value="7">
-                                <label for="m7"> 7</label>
+                                <label for="m7">7<span style="color:#1F2d43">0</span></label>
                             </div>
+                        </div>
+                        <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m8" value="8">
-                                <label for="m8"> 8</label>
+                                <label for="m8">8<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m9" value="9">
-                                <label for="m9"> 9</label>
+                                <label for="m9">9<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m10" value="10">
@@ -1019,6 +1022,8 @@
                                 <input type="checkbox" id="m14" value="14">
                                 <label for="m14">14</label>
                             </div>
+                        </div>
+                        <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m15" value="15">
                                 <label for="m15">15</label>
@@ -1047,6 +1052,8 @@
                                 <input type="checkbox" id="m21" value="21">
                                 <label for="m21">21</label>
                             </div>
+                        </div>
+                        <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m22" value="22">
                                 <label for="m22">22</label>
@@ -1075,6 +1082,8 @@
                                 <input type="checkbox" id="m28" value="28">
                                 <label for="m28">28</label>
                             </div>
+                        </div>
+                        <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
                                 <input type="checkbox" id="m29" value="29">
                                 <label for="m29">29</label>
@@ -1149,8 +1158,12 @@
                             </select>
                         </div> 
                     </div>
+                </div>
+                    <div style="padding-top:10px;">
+                    
                     <button type="submit" class="btn btn-white">Cancel</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                   </div>
                 </form>
             </div>
         </div>    
