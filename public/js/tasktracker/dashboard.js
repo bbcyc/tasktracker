@@ -24,14 +24,30 @@ $("#create-task").submit(function( event ) {
 $(".repeatable").change(function( event ) {
   isRepeatable = $("input[name='repeatable']:checked").val();
   if (isRepeatable==="true") {
-    $("#repeatableOptions").removeClass("hidden");
+    $("#frequencyOptions").removeClass("hidden");
     $("#datepicker").addClass("hidden");
   } else {
     $("#datepicker").removeClass("hidden");
-    $("#repeatableOptions").addClass("hidden");
+    $("#frequencyOptions").addClass("hidden");
   }
 });
 
+
+$("#frequencyWeekly").click(function( event ) {
+    $("#weeklyOptions").removeClass("hidden");
+    $("#monthdays").addClass("hidden");
+    $("#daysbyweek").addClass("hidden"); 
+});
+$("#frequencyDaily").click(function( event ) {
+    $("#weeklyOptions").addClass("hidden");
+    $("#monthdays").addClass("hidden");
+    $("#daysbyweek").addClass("hidden"); 
+});
+$("#frequencyMonthly").click(function( event ) {
+    $("#weeklyOptions").addClass("hidden");
+    $("#monthdays").removeClass("hidden");
+    $("#daysbyweek").removeClass("hidden"); 
+});
 /* Create/Edit a Task
 Both actions display the same page/modal
 Edit sction will prepopulate the page with details for that task
