@@ -850,135 +850,135 @@
                         <label>Day of Month</label>
                         <div class="clearfix">    
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m1" value="1">
+                                <input type="checkbox" name="daynumber" id="m1" value="1">
                                 <label for="m1">1<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m2" value="2">
+                                <input type="checkbox" name="daynumber" id="m2" value="2">
                                 <label for="m2">2<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m3" value="3">
+                                <input type="checkbox" name="daynumber" id="m3" value="3">
                                 <label for="m3">3<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m4" value="4">
+                                <input type="checkbox" name="daynumber" id="m4" value="4">
                                 <label for="m4">4<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m5" value="5">
+                                <input type="checkbox" name="daynumber" id="m5" value="5">
                                 <label for="m5">5<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m6" value="6">
+                                <input type="checkbox" name="daynumber" id="m6" value="6">
                                 <label for="m6">6<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m7" value="7">
+                                <input type="checkbox" name="daynumber" id="m7" value="7">
                                 <label for="m7">7<span style="color:#1F2d43">0</span></label>
                             </div>
                         </div>
                         <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m8" value="8">
+                                <input type="checkbox" name="daynumber" id="m8" value="8">
                                 <label for="m8">8<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m9" value="9">
+                                <input type="checkbox" name="daynumber" id="m9" value="9">
                                 <label for="m9">9<span style="color:#1F2d43">0</span></label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m10" value="10">
+                                <input type="checkbox" name="daynumber" id="m10" value="10">
                                 <label for="m10">10</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m11" value="11">
+                                <input type="checkbox" name="daynumber" id="m11" value="11">
                                 <label for="m11">11</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m12" value="12">
+                                <input type="checkbox" name="daynumber" id="m12" value="12">
                                 <label for="m12">12</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m13" value="13">
+                                <input type="checkbox" name="daynumber" id="m13" value="13">
                                 <label for="m13">13</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m14" value="14">
+                                <input type="checkbox" name="daynumber" id="m14" value="14">
                                 <label for="m14">14</label>
                             </div>
                         </div>
                         <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m15" value="15">
+                                <input type="checkbox" name="daynumber" id="m15" value="15">
                                 <label for="m15">15</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m16" value="16">
+                                <input type="checkbox" name="daynumber" id="m16" value="16">
                                 <label for="m16">16</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m17" value="17">
+                                <input type="checkbox" name="daynumber" id="m17" value="17">
                                 <label for="m17">17</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m18" value="18">
+                                <input type="checkbox" name="daynumber" id="m18" value="18">
                                 <label for="m18">18</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m19" value="19">
+                                <input type="checkbox" name="daynumber" id="m19" value="19">
                                 <label for="m19">19</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m20" value="20">
+                                <input type="checkbox" name="daynumber" id="m20" value="20">
                                 <label for="m20">20</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m21" value="21">
+                                <input type="checkbox" name="daynumber" id="m21" value="21">
                                 <label for="m21">21</label>
                             </div>
                         </div>
                         <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m22" value="22">
+                                <input type="checkbox" name="daynumber" id="m22" value="22">
                                 <label for="m22">22</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m23" value="23">
+                                <input type="checkbox" name="daynumber" id="m23" value="23">
                                 <label for="m23">23</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m24" value="24">
+                                <input type="checkbox" name="daynumber" id="m24" value="24">
                                 <label for="m24">24</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m25" value="25">
+                                <input type="checkbox" name="daynumber" id="m25" value="25">
                                 <label for="m25">25</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m26" value="26">
+                                <input type="checkbox" name="daynumber" id="m26" value="26">
                                 <label for="m26">26</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m27" value="27">
+                                <input type="checkbox" name="daynumber" id="m27" value="27">
                                 <label for="m27">27</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m28" value="28">
+                                <input type="checkbox" name="daynumber" id="m28" value="28">
                                 <label for="m28">28</label>
                             </div>
                         </div>
                         <div class="clearfix">
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m29" value="29">
+                                <input type="checkbox" name="daynumber" id="m29" value="29">
                                 <label for="m29">29</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m30" value="30">
+                                <input type="checkbox" name="daynumber" id="m30" value="30">
                                 <label for="m30">30</label>
                             </div>
                             <div class="checkbox checkbox-inline checkbox-replace">
-                                <input type="checkbox" id="m31" value="31">
+                                <input type="checkbox" name="daynumber" id="m31" value="31">
                                 <label for="m31">31</label>
                             </div>
                         </div>

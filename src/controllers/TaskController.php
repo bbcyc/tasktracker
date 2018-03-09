@@ -41,6 +41,8 @@ class TaskController extends Controller {
 					$weekday = $request->getParam("weekday");  // only for frequencyWeekly
 					break;
 				case "frequencyMonthly":
+					$daynumber = $request->getParam("daynumber");
+					
 					break;
 			}
 		}
