@@ -789,7 +789,7 @@
                     <div class="form-group hidden" id="datepicker"> 
                         <label>Date Picker (popup)</label> 
                         <div id="date-popup" class="input-group date"> 
-                            <input type="text" data-format="D, dd MM yyyy" class="form-control"> 
+                            <input type="text" name="date" data-format="D, dd MM yyyy" class="form-control"> 
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
                         </div>
                     </div>
@@ -816,31 +816,31 @@
                     <div class="form-group">
                         <label>Weekdays</label>
                         <div class="checkbox checkbox-replace">
-                            <input type="checkbox" id="sunday" value="Sunday">
+                            <input type="checkbox" name="weekday" id="sunday" value="Sunday">
                             <label for="sunday">Sunday</label>
                         </div>
                         <div class="checkbox checkbox-replace">
-                            <input type="checkbox" id="monday" value="Monday">
+                            <input type="checkbox" name="weekday" id="monday" value="Monday">
                             <label for="monday">Monday</label>
                         </div>
                         <div class="checkbox checkbox-replace">
-                            <input type="checkbox" id="tuesday" value="Tuesday">
+                            <input type="checkbox" name="weekday" id="tuesday" value="Tuesday">
                             <label for="tuesday">Tuesday</label>
                         </div>
                         <div class="checkbox checkbox-replace">
-                            <input type="checkbox" id="wednesday" value="Wednesday">
+                            <input type="checkbox" name="weekday" id="wednesday" value="Wednesday">
                             <label for="wednesday">Wednesday</label>
                         </div>
                         <div class="checkbox checkbox-replace">
-                            <input type="checkbox" id="thursday" value="Thursday">
+                            <input type="checkbox" name="weekday" id="thursday" value="Thursday">
                             <label for="thursday">Thursday</label>
                         </div>
                         <div class="checkbox checkbox-replace">
-                            <input type="checkbox" id="friday" value="Friday">
+                            <input type="checkbox" name="weekday" id="friday" value="Friday">
                             <label for="friday">Friday</label>
                         </div>
                         <div class="checkbox checkbox-replace">
-                            <input type="checkbox" id="saturday" value="Saturday">
+                            <input type="checkbox" name="weekday" id="saturday" value="Saturday">
                             <label for="saturday">Saturday</label>
                         </div>
                     </div>

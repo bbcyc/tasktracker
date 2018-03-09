@@ -33,17 +33,17 @@ $(".repeatable").change(function( event ) {
 });
 
 
-$("#frequencyWeekly").click(function( event ) {
+$("#frequencyWeekly").change(function( event ) {
     $("#weeklyOptions").removeClass("hidden");
     $("#monthdays").addClass("hidden");
     $("#daysbyweek").addClass("hidden"); 
 });
-$("#frequencyDaily").click(function( event ) {
+$("#frequencyDaily").change(function( event ) {
     $("#weeklyOptions").addClass("hidden");
     $("#monthdays").addClass("hidden");
     $("#daysbyweek").addClass("hidden"); 
 });
-$("#frequencyMonthly").click(function( event ) {
+$("#frequencyMonthly").change(function( event ) {
     $("#weeklyOptions").addClass("hidden");
     $("#monthdays").removeClass("hidden");
     $("#daysbyweek").removeClass("hidden"); 
