@@ -813,7 +813,7 @@
                         </div>
                     </div>
                     <div class="hidden" id="weeklyOptions">
-                    <div class="form-group">
+                    <div class="form-group" name="weekday[]">
                         <label>Weekdays</label>
                         <div class="checkbox checkbox-replace">
                             <input type="checkbox" name="weekday" id="sunday" value="Sunday">
@@ -849,7 +849,7 @@
                     <div class="form-group">
                         <label>Day of Month</label>
                         <div class="clearfix">    
-                            <div class="checkbox checkbox-inline checkbox-replace">
+                            <div class="checkbox checkbox-inline checkbox-replace" name="monthdays[]">
                                 <input type="checkbox" name="daynumber" id="m1" value="1">
                                 <label for="m1">1<span style="color:#1F2d43">0</span></label>
                             </div>
@@ -988,7 +988,7 @@
                     <div class="form-group"> 
                         <label class="col-sm-3 control-label">First Week</label> 
                         <div class="col-sm-9"> 
-                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                            <select name="selectMultipleWeek1[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
                                 <option value="1sunday" >Sunday</option> 
                                 <option value="1monday" >Monday</option> 
@@ -1003,7 +1003,7 @@
                      <div class="form-group"> 
                         <label class="col-sm-3 control-label">Second Week</label> 
                         <div class="col-sm-9"> 
-                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                            <select name="selectMultipleWeek2[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
                                 <option value="2sunday" >Sunday</option> 
                                 <option value="2monday" >Monday</option> 
@@ -1018,7 +1018,7 @@
                      <div class="form-group"> 
                         <label class="col-sm-3 control-label">Third Week</label> 
                         <div class="col-sm-9"> 
-                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                            <select name="selectMultipleWeek3[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
                                 <option value="3sunday" >Sunday</option> 
                                 <option value="3monday" >Monday</option> 
@@ -1033,7 +1033,7 @@
                      <div class="form-group"> 
                         <label class="col-sm-3 control-label">Fourth Week</label> 
                         <div class="col-sm-9"> 
-                            <select name="selectMultiple" class="select2 form-control" data-placeholder="Select days" multiple> 
+                            <select name="selectMultipleWeek4[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
                                 <option value="4sunday" >Sunday</option> 
                                 <option value="4monday" >Monday</option> 
@@ -1047,11 +1047,8 @@
                     </div>
                 </div>
             </div>
-                    <div style="padding-top:10px;">
-                    
-                    <button type="submit" class="btn btn-white">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                   </div>
+        <button type="submit" class="btn btn-white">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>    

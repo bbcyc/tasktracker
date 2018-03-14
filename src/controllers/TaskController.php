@@ -30,29 +30,42 @@ class TaskController extends Controller {
 	//	exit;
 		$name = $request->getParam('name');
 		$repeatable = $request->getParam('repeatable');
-		if (repeatable === "false") {
+		$payload = [
+			'name' => $name,
+			'repeatable' => $repeatable,
+		];
+		if ($repeatable === "false") {
 			$date = $request->getParam('date');
+			$payload['date'] = $date;
 		} else {
 			$frequency = $request->getParam('frequency');
+			$payload ['frequency'] = $frequency;
 			switch ($frequency) {
-				case "frequencyDaily":
+				case "Daily":
 					break;
-				case "frequencyWeekly":
-					$weekday = $request->getParam("weekday");  // only for frequencyWeekly
+				case "Weekly":
+					$weekday = $request->getParam("weekday");
+					$payload['weekday'] = $weekday;
 					break;
-				case "frequencyMonthly":
+				case "Monthly":
 					$daynumber = $request->getParam("daynumber");
-					
+					$week1days = $request->getParam("selectMultipleWeek1");
+					$week2days = $request->getParam("selectMultipleWeek2");
+					$week3days = $request->getParam("selectMultipleWeek3");
+					$week4days = $request->getParam("selectMultipleWeek4");
+					$payload []= [
+						'daynumber' => $daynumber,
+						'week1days' => $week1days,
+						'week2days' => $week2days,
+						'week3days' => $week3days,
+						'week4days' => $week4days,
+					];
 					break;
 			}
 		}
-		$payload = [
-						'name' => $name,
-						'repeatable' => $repeatable,
-						'date' => $date,
+		$payload []= [
 						'messageType' => 'error',
-						'message' => 'Could not create task'
-						
+						'message' => 'Could not create task',
 					];
 		return $response->withJson($payload);
 
