@@ -22,7 +22,7 @@ return [
             'host' => '127.0.0.1:3306',
             'database' => 'tasktracker',
             'username' => 'root',
-            'password' => 'qu12b0wl',
+            'password' => '/*Qu12b0wl*/',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

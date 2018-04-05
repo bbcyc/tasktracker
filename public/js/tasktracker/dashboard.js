@@ -29,6 +29,12 @@ $(".repeatable").change(function( event ) {
   } else {
     $("#datepicker").removeClass("hidden");
     $("#frequencyOptions").addClass("hidden");
+    $("#weeklyOptions").addClass("hidden");
+    $("#monthdays").addClass("hidden");
+    $("#daysbyweek").addClass("hidden");
+    $("#frequencyDaily").prop('checked', false);
+    $("#frequencyWeekly").prop('checked', false);
+    $("#frequencyMonthly").prop('checked', false);
   }
 });
 
