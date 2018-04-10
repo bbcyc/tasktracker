@@ -6,6 +6,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 use App\Models\User;
+use App\Models\Task;
+use App\Models\Frequency;
 
 class TaskController extends Controller {
 	private $db;
@@ -26,28 +28,43 @@ class TaskController extends Controller {
 	}
 
 	public function create(Request $request, Response $response) {
-	//	\App\Utilities::pr($request);
-	//	exit;
+		//\App\Utilities::pr($request);
+		//exit;
 		$name = $request->getParam('name');
 		$repeatable = $request->getParam('repeatable');
 		$payload = [
 			'name' => $name,
 			'repeatable' => $repeatable,
 		];
+
+		$data = [];
+		$data['userID'] = $_SESSION['userID'];
+		$data['name'] = $name;
+		$data['isRepeatable'] = $repeatable;
+		$task = new Task();
+		$taskID = $task->create($data);
+		$payload['taskID'] = $taskID;
+		
 		if ($repeatable === "false") {
 			$date = $request->getParam('date');
 			$payload['date'] = $date;
 		} else {
+			$howOften = new Frequency();
+			$howOften->taskID = $taskID;
+			
 			$frequency = $request->getParam('frequency');
 			$payload ['frequency'] = $frequency;
 			switch ($frequency) {
 				case "Daily":
+				$howOften->period = PERIOD_DAILY;
 					break;
 				case "Weekly":
 					$weekday = $request->getParam("weekday");
 					$payload['weekday'] = $weekday;
+					$howOften->period = PERIOD_WEEKLY;
 					break;
 				case "Monthly":
+					$howOften->period = PERIOD_MONTHLY;
 					$daynumber = $request->getParam("daynumber");
 					$week1days = $request->getParam("selectMultipleWeek1");
 					$week2days = $request->getParam("selectMultipleWeek2");
@@ -67,6 +84,7 @@ class TaskController extends Controller {
 						'messageType' => 'error',
 						'message' => 'Could not create task',
 					];
+		
 		return $response->withJson($payload);
 
 	// call to task_model
