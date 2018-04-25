@@ -31,18 +31,17 @@ class TaskController extends Controller {
 		//\App\Utilities::pr($request);
 		//exit;
 		$name = $request->getParam('name');
-		$repeatable = $request->getParam('repeatable');
+		$repeatable = $request->getParam('repeatable') === 'true';
 		$payload = [
 			'name' => $name,
 			'repeatable' => $repeatable,
 		];
-
-		$data = [];
-		$data['userID'] = $_SESSION['userID'];
-		$data['name'] = $name;
-		$data['isRepeatable'] = $repeatable;
 		$task = new Task();
-		$taskID = $task->create($data);
+		$task->userID = $_SESSION['userID'];
+		$task->name = $name;
+		$task->isRepeatable = $repeatable;
+		$taskSuccess = $task->save();
+		$taskID = $task->id;
 		$payload['taskID'] = $taskID;
 		
 		if ($repeatable === "false") {
@@ -56,20 +55,37 @@ class TaskController extends Controller {
 			$payload ['frequency'] = $frequency;
 			switch ($frequency) {
 				case "Daily":
-				$howOften->period = PERIOD_DAILY;
+				$howOften->period = Frequency::PERIOD_DAILY;
 					break;
 				case "Weekly":
 					$weekday = $request->getParam("weekday");
 					$payload['weekday'] = $weekday;
-					$howOften->period = PERIOD_WEEKLY;
+					$weekdayBitMask = Frequency::convertWeekdaysToBitmask($weekday);
+					
+					$howOften->weekday = $weekdayBitMask;
+					$howOften->period = Frequency::PERIOD_WEEKLY;
+					
 					break;
 				case "Monthly":
-					$howOften->period = PERIOD_MONTHLY;
+					$howOften->period = Frequency::PERIOD_MONTHLY;
+
 					$daynumber = $request->getParam("daynumber");
+
+
 					$week1days = $request->getParam("selectMultipleWeek1");
 					$week2days = $request->getParam("selectMultipleWeek2");
 					$week3days = $request->getParam("selectMultipleWeek3");
 					$week4days = $request->getParam("selectMultipleWeek4");
+					$weekndays = [$week1days, $week2days, $week3days, $week4days];
+					for ($n=0; $n<count($weekndays); $n++) {
+						$freq = new Frequency();
+						$freq->postion = $n + 1;
+						$freq->weekday = Frequency::convertWeekdaysToBitmask($week1days);
+						$freq->period = Frequency::PERIOD_MONTHLY;
+						$freq->taskID = $taskID;
+						$freq->save();
+					}
+					
 					$payload []= [
 						'daynumber' => $daynumber,
 						'week1days' => $week1days,
@@ -79,6 +95,7 @@ class TaskController extends Controller {
 					];
 					break;
 			}
+			$howOften->save();
 		}
 		$payload []= [
 						'messageType' => 'error',
@@ -87,7 +104,7 @@ class TaskController extends Controller {
 		
 		return $response->withJson($payload);
 
-	// call to task_model
+	
         // call to frequency model
 	}
 

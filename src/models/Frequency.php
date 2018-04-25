@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Frequency extends Model
 {
     /**
      * Indicates if the model should be timestamped.
@@ -47,5 +47,41 @@ class Task extends Model
             'position' => "",
         ]);
         return $taskID;
+    }
+
+    public static function convertDayToNumber ($weekday) {
+        switch ($weekday) {
+            case "Monday": 
+                return self::WEEKDAY_MON;
+            case "Tuesday":
+                return self::WEEKDAY_TUE;
+            case "Wednesday":
+                return self::WEEKDAY_WED;
+            case "Thursday":
+                return self::WEEKDAY_THU;
+            case "Friday":
+                return self::WEEKDAY_FRI;
+            case "Saturday":
+                return self::WEEKDAY_SAT;
+            case "Sunday":
+                return self::WEEKDAY_SUN;
+            default: 
+                echo "Malformed weekday used";
+                return 0;
+        }
+    }
+
+    public static function convertWeekdaysToBitmask ($weekdays) {
+        if (empty($weekdays)) {
+            $weekdayBitMask = 0;
+        }
+        else if (is_array($weekdays)) {
+            foreach ($weekdays as $day) {
+                $weekdayBitMask += convertDayToNumber($day);
+            }
+        }
+        else {
+            $weekdayBitMask = convertDayToNumber($weekdays);
+        }
     }
 }
