@@ -990,13 +990,13 @@
                         <div class="col-sm-9"> 
                             <select name="selectMultipleWeek1[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
-                                <option value="1sunday" >Sunday</option> 
-                                <option value="1monday" >Monday</option> 
-                                <option value="1tuesday" >Tuesday</option> 
-                                <option value="1wednesday" >Wednesday</option> 
-                                <option value="1thursday" >Thursday</option> 
-                                <option value="1friday" >Friday</option> 
-                                <option value="1saturday" >Saturday</option>
+                                <option value="Sunday" >Sunday</option> 
+                                <option value="Monday" >Monday</option> 
+                                <option value="Tuesday" >Tuesday</option> 
+                                <option value="Wednesday" >Wednesday</option> 
+                                <option value="Thursday" >Thursday</option> 
+                                <option value="Friday" >Friday</option> 
+                                <option value="Saturday" >Saturday</option>
                             </select>
                         </div> 
                     </div>
@@ -1005,13 +1005,13 @@
                         <div class="col-sm-9"> 
                             <select name="selectMultipleWeek2[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
-                                <option value="2sunday" >Sunday</option> 
-                                <option value="2monday" >Monday</option> 
-                                <option value="2tuesday" >Tuesday</option> 
-                                <option value="2wednesday" >Wednesday</option> 
-                                <option value="2thursday" >Thursday</option> 
-                                <option value="2friday" >Friday</option> 
-                                <option value="2saturday" >Saturday</option>
+                                <option value="Sunday" >Sunday</option> 
+                                <option value="Monday" >Monday</option> 
+                                <option value="Tuesday" >Tuesday</option> 
+                                <option value="Wednesday" >Wednesday</option> 
+                                <option value="Thursday" >Thursday</option> 
+                                <option value="Friday" >Friday</option> 
+                                <option value="Saturday" >Saturday</option>
                             </select>
                         </div> 
                     </div>
@@ -1020,13 +1020,13 @@
                         <div class="col-sm-9"> 
                             <select name="selectMultipleWeek3[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
-                                <option value="3sunday" >Sunday</option> 
-                                <option value="3monday" >Monday</option> 
-                                <option value="3tuesday" >Tuesday</option> 
-                                <option value="3wednesday" >Wednesday</option> 
-                                <option value="3thursday" >Thursday</option> 
-                                <option value="3friday" >Friday</option> 
-                                <option value="3saturday" >Saturday</option>
+                                <option value="Sunday" >Sunday</option> 
+                                <option value="Monday" >Monday</option> 
+                                <option value="Tuesday" >Tuesday</option> 
+                                <option value="Wednesday" >Wednesday</option> 
+                                <option value="Thursday" >Thursday</option> 
+                                <option value="Friday" >Friday</option> 
+                                <option value="Saturday" >Saturday</option>
                             </select>
                         </div> 
                     </div>
@@ -1035,13 +1035,13 @@
                         <div class="col-sm-9"> 
                             <select name="selectMultipleWeek4[]" class="select2 form-control" data-placeholder="Select days" multiple> 
                                 <option value="">Select days</option>
-                                <option value="4sunday" >Sunday</option> 
-                                <option value="4monday" >Monday</option> 
-                                <option value="4tuesday" >Tuesday</option> 
-                                <option value="4wednesday" >Wednesday</option> 
-                                <option value="4thursday" >Thursday</option> 
-                                <option value="4friday" >Friday</option> 
-                                <option value="4saturday" >Saturday</option>
+                                <option value="Sunday" >Sunday</option> 
+                                <option value="Monday" >Monday</option> 
+                                <option value="Tuesday" >Tuesday</option> 
+                                <option value="Wednesday" >Wednesday</option> 
+                                <option value="Thursday" >Thursday</option> 
+                                <option value="Friday" >Friday</option> 
+                                <option value="Saturday" >Saturday</option>
                             </select>
                         </div> 
                     </div>

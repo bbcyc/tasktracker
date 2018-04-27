@@ -77,11 +77,12 @@ class Frequency extends Model
         }
         else if (is_array($weekdays)) {
             foreach ($weekdays as $day) {
-                $weekdayBitMask += convertDayToNumber($day);
+                $weekdayBitMask += self::convertDayToNumber($day);
             }
         }
         else {
-            $weekdayBitMask = convertDayToNumber($weekdays);
+            $weekdayBitMask = self::convertDayToNumber($weekdays);
         }
+        return $weekdayBitMask;
     }
 }

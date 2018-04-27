@@ -29,6 +29,7 @@ class TaskController extends Controller {
 
 	public function create(Request $request, Response $response) {
 		//\App\Utilities::pr($request);
+		//var_dump($request);
 		//exit;
 		$name = $request->getParam('name');
 		$repeatable = $request->getParam('repeatable') === 'true';
@@ -44,18 +45,20 @@ class TaskController extends Controller {
 		$taskID = $task->id;
 		$payload['taskID'] = $taskID;
 		
-		if ($repeatable === "false") {
+		if (!$repeatable) {
 			$date = $request->getParam('date');
 			$payload['date'] = $date;
+			
 		} else {
 			$howOften = new Frequency();
+			
 			$howOften->taskID = $taskID;
 			
 			$frequency = $request->getParam('frequency');
 			$payload ['frequency'] = $frequency;
 			switch ($frequency) {
 				case "Daily":
-				$howOften->period = Frequency::PERIOD_DAILY;
+					$howOften->period = Frequency::PERIOD_DAILY;
 					break;
 				case "Weekly":
 					$weekday = $request->getParam("weekday");
@@ -67,8 +70,7 @@ class TaskController extends Controller {
 					
 					break;
 				case "Monthly":
-					$howOften->period = Frequency::PERIOD_MONTHLY;
-
+					
 					$daynumber = $request->getParam("daynumber");
 
 
@@ -79,8 +81,8 @@ class TaskController extends Controller {
 					$weekndays = [$week1days, $week2days, $week3days, $week4days];
 					for ($n=0; $n<count($weekndays); $n++) {
 						$freq = new Frequency();
-						$freq->postion = $n + 1;
-						$freq->weekday = Frequency::convertWeekdaysToBitmask($week1days);
+						$freq->position = $n + 1;
+						$freq->weekday = Frequency::convertWeekdaysToBitmask($weekndays[$n]);
 						$freq->period = Frequency::PERIOD_MONTHLY;
 						$freq->taskID = $taskID;
 						$freq->save();
@@ -95,7 +97,9 @@ class TaskController extends Controller {
 					];
 					break;
 			}
-			$howOften->save();
+			if ($frequency !== "Monthly") {
+				$howOften->save();
+			}
 		}
 		$payload []= [
 						'messageType' => 'error',
