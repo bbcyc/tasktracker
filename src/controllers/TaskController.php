@@ -4,10 +4,12 @@ namespace App\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use \DateTime;
 
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Frequency;
+use App\Models\Event;
 
 class TaskController extends Controller {
 	private $db;
@@ -48,6 +50,14 @@ class TaskController extends Controller {
 		if (!$repeatable) {
 			$date = $request->getParam('date');
 			$payload['date'] = $date;
+			$formattedDate = new DateTime();
+			$formattedDate = $formattedDate->createFromFormat('m\/d\/Y', $date);
+			$formattedDate = $formattedDate->format('Y-m-d');
+			$event = new Event();
+			$event->taskID = $taskID;
+			$event->dateScheduled = $formattedDate;
+			$event->isCompleted = 0;
+			$event->save();
 			
 		} else {
 			$howOften = new Frequency();
@@ -70,9 +80,16 @@ class TaskController extends Controller {
 					
 					break;
 				case "Monthly":
-					
 					$daynumber = $request->getParam("daynumber");
-
+					if (isset($daynumber)) {
+						foreach ($daynumber as $day){
+							$monthdayFreq = new Frequency();
+							$monthdayFreq->monthday = $day;
+							$monthdayFreq->period = Frequency::PERIOD_MONTHLY;
+							$monthdayFreq->taskID = $taskID;
+							$monthdayFreq->save();
+						}
+					}
 
 					$week1days = $request->getParam("selectMultipleWeek1");
 					$week2days = $request->getParam("selectMultipleWeek2");
