@@ -33,7 +33,7 @@ $app->post('/signup', 'App\Controllers\AuthController:signup');
 
 $app->get('/logout', 'App\Controllers\AuthController:logout');
 
-$app->get('/create', 'App\Controllers\EventController:createDailyEventsForDate');
+$app->get('/create', 'App\Controllers\EventController:createEvents30days');
 
 $app->get('/password/{password}', function (Request $request, Response $response, array $args) {
 	return password_hash($args['password'], PASSWORD_DEFAULT);
