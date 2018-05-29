@@ -64,11 +64,15 @@ function createDateRangeNext30Days($format = 'Y-m-d')
     }
 
     public function createDailyEventsForDate($date = '2018-05-23') {
-        $frequencies = Frequency::where(period, 1);
+        $frequencies = Frequency::where(period, Frequency::PERIOD_DAILY);
+        \App\Utilities::pr($frequencies);
+		exit;
         foreach ($frequencies as $frequency) {
             $event = new Event();
             $event->taskID = $frequency['taskID'];
-            
+            $event->dateScheduled = $date;
+            $event->isCompleted = 0;
+            $event-save();
         } 
     }
 }
