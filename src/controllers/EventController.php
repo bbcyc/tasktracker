@@ -63,20 +63,42 @@ function createDateRangeNext30Days($format = 'Y-m-d')
     // create one event per specified day and save
     }
 
-    public function createDailyEventsForDate($date = '2018-05-23') {
+    public function createDailyEventsForDate(Request $request, Response $response, array $args) {
         $frequencies = Frequency::where('period', 1)->get();
        // \App\Utilities::pr($frequencies);
        // exit;
         foreach ($frequencies as $frequency) {
             $event = new Event();
             $event->taskID = $frequency['taskID'];
-            $event->dateScheduled = '2018-05-26'; //FIXME
+            $event->dateScheduled = $args['date'];
             $event->isCompleted = 0;
-            \App\Utilities::pr($event);
-            exit;
+          //  \App\Utilities::pr($event);
+          //  exit;
             $event->save();
         } 
     }
+
+    public function createWeeklyEventsForDate(Request $request, Response $response, array $args) {
+        $frequencies = Frequency::where('period', 2)->get();
+       // \App\Utilities::pr($frequencies);
+       // exit;
+        foreach ($frequencies as $frequency) {
+            $scheduleDate = $args['date'];
+            $scheduleDateDayofWeek = date('l', strtotime($scheduleDate));
+            $convertedDayofWeek = Frequency::convertDayToNumber($scheduleDateDayofWeek);
+            if ($convertedDayofWeek & $frequency['weekday']) {
+                $event = new Event();
+                $event->taskID = $frequency['taskID'];
+                $event->dateScheduled = $args['date'];
+                $event->isCompleted = 0;
+          //  \App\Utilities::pr($event);
+          //  exit;
+                $event->save();
+            } else {
+                continue;
+            }
+        } 
+    } 
 }
 
 // function to create events for one date
