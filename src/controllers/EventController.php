@@ -72,8 +72,6 @@ function createDateRangeNext30Days($format = 'Y-m-d')
             $event->taskID = $frequency['taskID'];
             $event->dateScheduled = $args['date'];
             $event->isCompleted = 0;
-          //  \App\Utilities::pr($event);
-          //  exit;
             $event->save();
         } 
     }
@@ -85,8 +83,8 @@ function createDateRangeNext30Days($format = 'Y-m-d')
         foreach ($frequencies as $frequency) {
             $scheduleDate = $args['date'];
             $scheduleDateDayofWeek = date('l', strtotime($scheduleDate));
-            $convertedDayofWeek = Frequency::convertDayToNumber($scheduleDateDayofWeek);
-            if ($convertedDayofWeek & $frequency['weekday']) {
+            $convertedDayOfWeek = Frequency::convertDayToNumber($scheduleDateDayofWeek);
+            if ($convertedDayOfWeek & $frequency['weekday']) {
                 $event = new Event();
                 $event->taskID = $frequency['taskID'];
                 $event->dateScheduled = $args['date'];
@@ -98,6 +96,41 @@ function createDateRangeNext30Days($format = 'Y-m-d')
                 continue;
             }
         } 
+    }
+
+    public function weekOfMonth($when) {
+        return ceil(date('j', strtotime($when)) / 7);
+    }
+    
+    
+    public function createMonthlyEventsForDate(Request $request, Response $response, array $args) {
+        $frequencies = Frequency::where('period', 3)->get();
+       // \App\Utilities::pr($frequencies);
+       // exit;
+        foreach ($frequencies as $frequency) {
+            $scheduleDate = $args['date'];
+            $scheduleDateDayOfMonth = date('j', strtotime($scheduleDate));
+            $monthday = $frequency['monthday'] ?? false;
+            $scheduleDateDayofWeek = date('l', strtotime($scheduleDate));
+            $convertedDayOfWeek = Frequency::convertDayToNumber($scheduleDateDayofWeek);
+            if ($monthday && ($monthday == $scheduleDateDayOfMonth)) {
+                $event = new Event();
+                $event->taskID = $frequency['taskID'];
+                $event->dateScheduled = $scheduleDate;
+                $event->isCompleted = 0;
+                $event->save();
+            } else if ((self::weekOfMonth($scheduleDate) == 
+                $freqency['position']) && 
+                ($convertedDayOfWeek & $frequency['weekday'])) {
+                    $event = new Event();
+                    $event->taskID = $frequency['taskID'];
+                    $event->dateScheduled = $scheduleDate;
+                    $event->isCompleted = 0;
+                    $event->save();
+            } else {
+                continue;
+            }
+        }
     } 
 }
 
