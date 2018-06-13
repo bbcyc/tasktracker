@@ -97,7 +97,7 @@ function createDateRangeNext30Days($format = 'Y-m-d')
             }
         } 
     }
-
+    /** docblock what is j, $when, why divide by 7 */
     public function weekOfMonth($when) {
         return ceil(date('j', strtotime($when)) / 7);
     }
@@ -120,7 +120,7 @@ function createDateRangeNext30Days($format = 'Y-m-d')
                 $event->isCompleted = 0;
                 $event->save();
             } else if ((self::weekOfMonth($scheduleDate) == 
-                $freqency['position']) && 
+                $frequency['position']) && 
                 ($convertedDayOfWeek & $frequency['weekday'])) {
                     $event = new Event();
                     $event->taskID = $frequency['taskID'];
@@ -132,6 +132,24 @@ function createDateRangeNext30Days($format = 'Y-m-d')
             }
         }
     } 
+
+    public function getDatesForTask($taskID) {
+        $events = Event::where('taskID', $taskID)->get();
+        $dates = [];
+        foreach ($events as $event) {
+            $dates[] = $event['dateScheduled'];
+        }
+        return $dates;
+    }
+
+    public function calculateDatesForTask($taskID, $dateRange) {
+        // loop through days from today to today plus dateRange
+        // for each day determine if task should have an event
+        // if yes, add day to date array
+        // return date array
+        
+    }
+
 }
 
 // function to create events for one date
@@ -141,3 +159,11 @@ function createDateRangeNext30Days($format = 'Y-m-d')
 //period==3 monthday compare date to monthday, create event if equal
 // period==3 weekday+position compare day of week to date and
 // position to week of month, create event if equal
+
+/* determine date 30 days from today
+select all examples of task in the next thirty days
+compare number of task already scheduled againest number that should be scheduled
+and create any that are missing */
+
+/* get dates that a task has events scheduled from db, get list of dates for which
+the task should be scheduled, compare the two and create events that are missing */
