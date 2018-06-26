@@ -149,7 +149,19 @@ function createDateRangeNext30Days($format = 'Y-m-d')
         // return date array
         
     }
+/* create a function that takes a taskid, a start date, and an end date,
+  calculates which dates an event should be scheduled for, and creates events 
+  that dont already exist */
+    public function createEventsForDateRange($taskID, $startDate = null, $endDate = null) {
+        $startDate = new DateTime($startDate ?? 'NOW');
+        if (isset($endDate)) {
+            $endDate = new DateTime($endDate);
+        } else {
+            // if $endDate is not set, then set it to startDate plus 30 days
+             $endDate = (new DateTime($startDate->format('Y-m-d')))->add(new DateInterval('P30D'));
+        }    
 
+    }
 }
 
 // function to create events for one date
