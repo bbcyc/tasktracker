@@ -39,6 +39,19 @@ function createDateRangeNext30Days($format = 'Y-m-d')
     return $range;
 }
 
+function createDateRange($startDate, $endDate, $format = 'Y-m-d')
+{
+    $interval = new \DateInterval('P1D'); // 1 Day
+    $dateRange = new \DatePeriod($startDate, $interval, $endDate);
+
+    $range = [];
+    foreach ($dateRange as $date) {
+        $range[] = $date->format($format);
+    }
+
+    return $range;
+}
+
     public function createEvents30days() {
         $range = self::createDateRangeNext30Days();
         $tasks = Task::all();
@@ -154,13 +167,49 @@ function createDateRangeNext30Days($format = 'Y-m-d')
   that dont already exist */
     public function createEventsForDateRange($taskID, $startDate = null, $endDate = null) {
         $startDate = new DateTime($startDate ?? 'NOW');
-        if (isset($endDate)) {
+        if ($endDate) {
             $endDate = new DateTime($endDate);
         } else {
             // if $endDate is not set, then set it to startDate plus 30 days
              $endDate = (new DateTime($startDate->format('Y-m-d')))->add(new DateInterval('P30D'));
         }    
-
+        $dateRange = createDateRange($startDate, $endDate);
+        $frequencies = Frequency::where('taskID', $taskID)->get();
+        foreach ($frequencies as $frequency) {
+            // loop through the dates between start and end 
+            $shouldBeScheduled = [];
+            foreach ($dateRange as $date) {
+            // for each day return whether an event should be scheduled for that day
+                if ($frequency['period'] == 1) {
+                    $shouldBeScheduled []= $date; 
+                } elseif ($frequency['period'] == 2) {
+                    $scheduleDate = $date;
+                    $scheduleDateDayofWeek = date('l', strtotime($scheduleDate));
+                    $convertedDayOfWeek = Frequency::convertDayToNumber($scheduleDateDayofWeek);
+                    if ($convertedDayOfWeek & $frequency['weekday']) {
+                        $shouldBeScheduled []= $date;
+                    }
+                } elseif ($frequency['period'] == 3) {
+                    foreach ($frequencies as $frequency) {
+                        $scheduleDate = $date;
+                        $scheduleDateDayOfMonth = date('j', strtotime($scheduleDate));
+                        $monthday = $frequency['monthday'] ?? false;
+                        $scheduleDateDayofWeek = date('l', strtotime($scheduleDate));
+                        $convertedDayOfWeek = Frequency::convertDayToNumber($scheduleDateDayofWeek);
+                        if ($monthday && ($monthday == $scheduleDateDayOfMonth)) {
+                            $shouldBeScheduled []= $date;
+                        } else if (self::weekOfMonth($scheduleDate) == 
+                            $frequency['position'] 
+                            && $convertedDayOfWeek & $frequency['weekday']) {
+                                $shouldBeScheduled []= $date;
+                        }
+                    }
+                }
+            }
+            // check what events are scheduled 
+            // create events that should be scheduled, but arent already
+            }
+        }
     }
 }
 
