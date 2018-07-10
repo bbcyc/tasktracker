@@ -165,7 +165,12 @@ function createDateRange($startDate, $endDate, $format = 'Y-m-d')
 /* create a function that takes a taskid, a start date, and an end date,
   calculates which dates an event should be scheduled for, and creates events 
   that dont already exist */
-    public function createEventsForDateRange($taskID, $startDate = null, $endDate = null) {
+    public function createEventsForDateRange(Request $request, Response $response, array $args) {
+        $postVars = $request->getParsedBody();
+        $taskID = $postVars['taskID'];
+        $startDate = $postVars['startDate'];
+        $endDate = $postVars['endDate']; 
+        
         $startDate = new DateTime($startDate ?? 'NOW');
         if ($endDate) {
             $endDate = new DateTime($endDate);
@@ -173,7 +178,7 @@ function createDateRange($startDate, $endDate, $format = 'Y-m-d')
             // if $endDate is not set, then set it to startDate plus 30 days
              $endDate = (new DateTime($startDate->format('Y-m-d')))->add(new DateInterval('P30D'));
         }    
-        $dateRange = createDateRange($startDate, $endDate);
+        $dateRange = $this->createDateRange($startDate, $endDate);
         $frequencies = Frequency::where('taskID', $taskID)->get();
         foreach ($frequencies as $frequency) {
             // loop through the dates between start and end 
@@ -206,9 +211,31 @@ function createDateRange($startDate, $endDate, $format = 'Y-m-d')
                     }
                 }
             }
-            // check what events are scheduled 
-            // create events that should be scheduled, but arent already
+            // check what events are scheduled
+            $eventsScheduledResults = Event::where([
+                ['taskID', '=', $taskID],
+                ['dateScheduled', '>', $startDate],
+                ['dateScheduled', '<', $endDate]
+                ])->get();
+            $eventsScheduled = [];
+            foreach ($eventsScheduledResults as $event) {
+                $eventsScheduled []= $event['dateScheduled']; 
             }
+            // create events that should be scheduled, but arent already
+            $needToBeScheduled = array_diff($shouldBeScheduled, $eventsScheduled);
+            foreach ($needToBeScheduled as $newEvent) {
+                $event = new Event();
+                $event->taskID = $taskID;
+                $event->dateScheduled = $newEvent;
+                $event->isCompleted = 0;
+                $event->save();
+            }
+            // TODO: after editing a task that changes the frequency, delete all 
+            //        scheduled events that no longer meet the criteria
+            \App\Utilities::pr($needToBeScheduled);
+             exit;
+            
+        
         }
     }
 }

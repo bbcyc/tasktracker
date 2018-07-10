@@ -38,6 +38,9 @@ $app->get('/create/{date}', 'App\Controllers\EventController:createDailyEventsFo
 $app->get('/createweekly/{date}', 'App\Controllers\EventController:createWeeklyEventsForDate');
 
 $app->get('/createmonthly/{date}', 'App\Controllers\EventController:createMonthlyEventsForDate');
+
+$app->post('/createevents', 'App\Controllers\EventController:createEventsForDateRange');
+
 $app->get('/password/{password}', function (Request $request, Response $response, array $args) {
 	return password_hash($args['password'], PASSWORD_DEFAULT);
 });
