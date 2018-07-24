@@ -209,7 +209,7 @@
                 <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-1">Show me</button> -->
                 </div>
             </div>
-
+            
             <div class="row">
                 <div class="col-lg-6">
                     <div class="row">
@@ -533,59 +533,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading no-border clearfix"> 
-                            <h2 class="panel-title">TO-DOs for today</h2>
-                            <ul class="panel-tool-options"> 
-                                <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog icon-2x"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
-                                        <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
-                                        <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
-                                    </ul>
-                                 </li>
-                            </ul> 
-                        </div> 
-                        <!-- panel body --> 
-                        <div class="panel-body">
-                            <ul class="list-item todo-list"> 
-                                <li> 
-                                    <div class="checkbox checkbox-replace checkbox-primary"> 
-                                        <input type="checkbox" id="task-1" /> <label for="task-1">Fresh look &amp; feel to repaint the website according to the new brand logo.</label> 
-                                    </div> 
-                                </li> 
-                                <li> 
-                                    <div class="checkbox checkbox-replace checkbox-primary"> 
-                                        <input type="checkbox" id="task-2" checked /> <label for="task-2">Need some new responsive design for the wbesite.</label> 
-                                    </div> 
-                                </li> 
-                                <li> 
-                                    <div class="checkbox checkbox-replace checkbox-primary"> 
-                                        <input type="checkbox" id="task-3" /> <label for="task-3">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-                                    </div> 
-                                </li> 
-                                <li> 
-                                    <div class="checkbox checkbox-replace checkbox-primary"> 
-                                        <input type="checkbox" id="task-4" /> <label for="task-4">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-                                    </div> 
-                                </li> 
-                                <li> 
-                                    <div class="checkbox checkbox-replace checkbox-primary"> 
-                                        <input type="checkbox" id="task-5" /> <label for="task-5">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-                                    </div> 
-                                </li> 
-                            </ul>
-                            <div class="more">
-                                <button class="btn btn-primary">Click More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading no-border clearfix"> 

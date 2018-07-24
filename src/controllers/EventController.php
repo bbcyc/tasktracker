@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Event as Event;
 use App\Models\Frequency as Frequency;
 use \DateTime;
+use Helper\DateHelper as DateHelper;
 
 class EventController {
 	private $db;
@@ -23,37 +24,9 @@ class EventController {
  * @param string $format DateTime format, default is Y-m-d
  * @return array returns every date between $startDate and $endDate, formatted as "Y-m-d"
  */
-function createDateRangeNext30Days($format = 'Y-m-d')
-{
-    $begin = date($format);
-    $end = date($format, strtotime('+30 days'));
-
-    $interval = new \DateInterval('P1D'); // 1 Day
-    $dateRange = new \DatePeriod($begin, $interval, $end);
-
-    $range = [];
-    foreach ($dateRange as $date) {
-        $range[] = $date->format($format);
-    }
-
-    return $range;
-}
-
-function createDateRange($startDate, $endDate, $format = 'Y-m-d')
-{
-    $interval = new \DateInterval('P1D'); // 1 Day
-    $dateRange = new \DatePeriod($startDate, $interval, $endDate);
-
-    $range = [];
-    foreach ($dateRange as $date) {
-        $range[] = $date->format($format);
-    }
-
-    return $range;
-}
 
     public function createEvents30days() {
-        $range = self::createDateRangeNext30Days();
+        $range = DateHelper::createDateRangeNext30Days();
         $tasks = Task::all();
         foreach ($tasks as $task) {
             switch ($task['period']) {
@@ -110,10 +83,6 @@ function createDateRange($startDate, $endDate, $format = 'Y-m-d')
             }
         } 
     }
-    /** docblock what is j, $when, why divide by 7 */
-    public function weekOfMonth($when) {
-        return ceil(date('j', strtotime($when)) / 7);
-    }
     
     
     public function createMonthlyEventsForDate(Request $request, Response $response, array $args) {
@@ -132,7 +101,7 @@ function createDateRange($startDate, $endDate, $format = 'Y-m-d')
                 $event->dateScheduled = $scheduleDate;
                 $event->isCompleted = 0;
                 $event->save();
-            } else if ((self::weekOfMonth($scheduleDate) == 
+            } else if ((DateHelper::weekOfMonth($scheduleDate) == 
                 $frequency['position']) && 
                 ($convertedDayOfWeek & $frequency['weekday'])) {
                     $event = new Event();
@@ -178,7 +147,7 @@ function createDateRange($startDate, $endDate, $format = 'Y-m-d')
             // if $endDate is not set, then set it to startDate plus 30 days
              $endDate = (new DateTime($startDate->format('Y-m-d')))->add(new DateInterval('P30D'));
         }    
-        $dateRange = $this->createDateRange($startDate, $endDate);
+        $dateRange = DateHelper::createDateRange($startDate, $endDate);
         $frequencies = Frequency::where('taskID', $taskID)->get();
         foreach ($frequencies as $frequency) {
             // loop through the dates between start and end 
@@ -203,7 +172,7 @@ function createDateRange($startDate, $endDate, $format = 'Y-m-d')
                         $convertedDayOfWeek = Frequency::convertDayToNumber($scheduleDateDayofWeek);
                         if ($monthday && ($monthday == $scheduleDateDayOfMonth)) {
                             $shouldBeScheduled []= $date;
-                        } else if (self::weekOfMonth($scheduleDate) == 
+                        } else if (DateHelper::weekOfMonth($scheduleDate) == 
                             $frequency['position'] 
                             && $convertedDayOfWeek & $frequency['weekday']) {
                                 $shouldBeScheduled []= $date;
