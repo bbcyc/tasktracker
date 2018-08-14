@@ -207,6 +207,7 @@ class EventController {
         
         }
     }
+
 }
 
 // function to create events for one date

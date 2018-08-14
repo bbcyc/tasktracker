@@ -13,5 +13,4 @@ class Event extends Model
      */
     public $timestamps = false;
     
-    
 }

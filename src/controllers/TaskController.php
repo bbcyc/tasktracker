@@ -26,7 +26,11 @@ class TaskController extends Controller {
 		 	echo "You are not logged in";
 		 	exit;
 		 }
-		 return $this->container->renderer->render($response, 'dashboard.php');
+		 $events = Helper\EventHelper::getEventsByDate($userID, $date);
+		 $templateVariables = [
+			"title" => "Title"
+		];
+		 return $this->container->renderer->render($response, 'dashboard.php', $templateVariables);
 	}
 
 	public function create(Request $request, Response $response) {
