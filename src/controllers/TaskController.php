@@ -11,6 +11,8 @@ use App\Models\Task;
 use App\Models\Frequency;
 use App\Models\Event;
 
+use App\Helpers\EventHelper;
+
 class TaskController extends Controller {
 	private $db;
 	private $container;
@@ -25,10 +27,13 @@ class TaskController extends Controller {
 		 if (!$this->isLoggedIn()) {
 		 	echo "You are not logged in";
 		 	exit;
-		 }
-		 $events = Helper\EventHelper::getEventsByDate($userID, $date);
-		 $templateVariables = [
-			"title" => "Title"
+		 }	
+			$userID = 1;
+			$date = '2018-06-12';
+		  	$events = EventHelper::getEventsByDate($userID, $date);
+		  	$templateVariables = [	
+				"title" => "Title",
+				"events" => $events
 		];
 		 return $this->container->renderer->render($response, 'dashboard.php', $templateVariables);
 	}

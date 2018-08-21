@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Event as Event;
 use App\Models\Frequency as Frequency;
 use \DateTime;
-use Helper\DateHelper as DateHelper;
+use Helpers\DateHelper as DateHelper;
 
 class EventController {
 	private $db;

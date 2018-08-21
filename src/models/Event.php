@@ -12,5 +12,4 @@ class Event extends Model
      * @var bool
      */
     public $timestamps = false;
-    
 }

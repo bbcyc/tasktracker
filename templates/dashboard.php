@@ -202,7 +202,7 @@
         <div class="main-content">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1 class="page-title">Dashboard</h1>
+                    <h1 class="page-title"><?= $events ?>Dashboard</h1>
                 </div>
                 <div class="col-lg-6">
                     <button class="btn btn-sm btn-success pull-right" data-toggle="modal" data-target="#newtask">+ New Task</button>
@@ -231,10 +231,10 @@
 						<!-- panel body --> 
 						<div class="panel-body">
 							<ul class="list-item todo-list"> 
-                            <?php foreach ($tickets as $ticket): ?>
+                            <?php foreach ($events as $event): ?>
                                 <li> 
 									<div class="checkbox checkbox-replace checkbox-primary"> 
-										<input type="checkbox" id="task-1" /> <label for="task-1">Fresh look &amp; feel to repaint the website according to the new brand logo.</label> 
+										<input type="checkbox" id="task-1" /> <label for="task-1"><?= $event ?></label> 
 									</div> 
 								</li>
                             <?php endforeach; ?>
