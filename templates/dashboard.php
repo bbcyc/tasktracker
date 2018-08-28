@@ -231,39 +231,13 @@
 						<!-- panel body --> 
 						<div class="panel-body">
 							<ul class="list-item todo-list"> 
-                            <?php foreach ($events as $event): ?>
-                                <li> 
-									<div class="checkbox checkbox-replace checkbox-primary"> 
-										<input type="checkbox" id="task-1" /> <label for="task-1"><?= $event ?></label> 
-									</div> 
-								</li>
-                            <?php endforeach; ?>
-                            
-                                <li> 
-									<div class="checkbox checkbox-replace checkbox-primary"> 
-										<input type="checkbox" id="task-1" /> <label for="task-1">Fresh look &amp; feel to repaint the website according to the new brand logo.</label> 
-									</div> 
-								</li> 
-								<li> 
-									<div class="checkbox checkbox-replace checkbox-primary"> 
-										<input type="checkbox" id="task-2" checked /> <label for="task-2">Need some new responsive design for the wbesite.</label> 
-									</div> 
-								</li> 
-								<li> 
-									<div class="checkbox checkbox-replace checkbox-primary"> 
-										<input type="checkbox" id="task-3" /> <label for="task-3">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-									</div> 
-								</li> 
-								<li> 
-									<div class="checkbox checkbox-replace checkbox-primary"> 
-										<input type="checkbox" id="task-4" /> <label for="task-4">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-									</div> 
-								</li> 
-								<li> 
-									<div class="checkbox checkbox-replace checkbox-primary"> 
-										<input type="checkbox" id="task-5" /> <label for="task-5">Fresh look &amp; feel to repaint the website according to the new brand logo. </label> 
-									</div> 
-								</li> 
+                                <?php foreach ($events as $event): ?>
+                                    <li> 
+                                        <div class="checkbox checkbox-replace checkbox-primary"> 
+                                            <input type="checkbox" id=<?= $event['id'] ?> /> <label for=<?= $event['id'] ?>><?= $event['name'] ?></label> 
+                                        </div> 
+                                    </li>
+                                <?php endforeach; ?>
 							</ul>
 							<div class="more">
 								<button class="btn btn-primary">Click More</button>

@@ -46,7 +46,7 @@ $app->get('/password/{password}', function (Request $request, Response $response
 });
 
 // Task routes
-$app->get('/dashboard', 'App\Controllers\TaskController:dashboard'); 
+$app->get('/dashboard', 'App\Controllers\TaskController:dashboard');
 $app->post('/task/create', 'App\Controllers\TaskController:create');
    
     // Render index view

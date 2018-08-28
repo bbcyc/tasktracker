@@ -22,14 +22,16 @@ class TaskController extends Controller {
 		$this->container = $container;
 	}
 
-	public function dashboard(Request $request, Response $response) {
+	public function dashboard(Request $request, Response $response, array $args) {
 		 // FIXME: this could be better, find out how to load renderer properly
 		 if (!$this->isLoggedIn()) {
 		 	echo "You are not logged in";
 		 	exit;
 		 }	
 			$userID = 1;
-			$date = '2018-06-12';
+			$today = new DateTime();
+			$today = $today->format('Y-m-d');
+			$date = $request->getParam('date') ?? $today;
 		  	$events = EventHelper::getEventsByDate($userID, $date);
 		  	$templateVariables = [	
 				"title" => "Title",
